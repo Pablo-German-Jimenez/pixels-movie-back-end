@@ -1,0 +1,24 @@
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import {dirname} from 'path';
+import {fileURLToPath} from 'url';
+import './dbConfig.js';
+
+export default class Server{
+    constructor(){
+        this.app=express();
+        this.port=process.env.PORT || 3000;
+}
+    middlewares(){
+        this.app.use(cors());
+        this.app.use(morgan('dev'));
+        this.app.use(express.json());
+        const __dirname=dirname(fileURLToPath(import.meta.url));
+        this.app.use('/uploads',express.static(__dirname+'/uploads'))
+    };   
+
+listen(){
+    this.app.listen(this.port,()=>console.info('Servidor corriendo en puerto:http://localhost:'+this.port))
+}
+}
