@@ -1,12 +1,13 @@
 import {Router} from 'express';
+import { getMovie , postMovie } from '../controllers/movies.controllers.js';
 
 
 
 
+const moviesRoutes = Router();
 
-const router = Router();
+moviesRoutes.route('/').get(getMovie);
+moviesRoutes.route('/').post(postMovie);
 
-router.route('/').post(createMovie).get(getMovie);
 
-
-export default router;
+export default moviesRoutes;
