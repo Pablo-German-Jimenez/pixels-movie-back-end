@@ -3,6 +3,6 @@ import moviesRoutes from './movie.routes.js';
 
 const router = Router();
 
-router.use('/movies', moviesRoutes);
+router.use('/movies', createMovie);
 
 export default router;
