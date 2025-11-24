@@ -12,59 +12,54 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
     minLength: 10,
-    maxLength: 500,
-    genre: {
-      type: String,
-      required: true,
-      enum: [
-        "Todos",
-        "Acción",
-        "Aventura",
-        "Animación",
-        "Comedia",
-        "Crimen",
-        "Documental",
-        "Drama",
-        "Familia",
-        "Fantasía",
-        "Historia",
-        "Horror",
-        "Música",
-        "Misterio",
-        "Romance",
-        "Ciencia Ficción",
-        "Película de TV",
-        "Thriller",
-        "Guerra",
-        "Western",
-      ],
-    }},
+    maxLength: 500},
+    genre:[
+      {type:String,
+        required:true,
+        enum:[
+                "Todos",
+      "Acción",
+      "Aventura",
+      "Animación",
+      "Comedia",
+      "Crimen",
+      "Documental",
+      "Drama",
+      "Familia",
+      "Fantasía",
+      "Historia",
+      "Horror",
+      "Música",
+      "Misterio",
+      "Romance",
+      "Ciencia Ficción",
+      "Película de TV",
+      "Thriller",
+      "Guerra",
+      "Western"
+        ]
+      }
+    ]
+,
     year: {
         type:Number,
         required:true,
-        min:1900,
+        min:1888,
         max:new Date().getFullYear()
     },
     duration: {
         type: Number,
         required:true,
-        min:0,
-        max:10
-    },
-    minutes: {
-        type:Number,
-        required:true,
-        min:0,
-        max:59
-    },
-    seconds: {
-        type:Number,
-        default:0,
-        max:59
+        min:1,
+        max:600
     },
     imageUrl:{
         type:String,
-        required:true
+        required:true,
+         validate:{
+        validator: (valor)=>{ 
+            return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?(\.(jpg|jpeg|png|webp))$/.test(valor)}
+        }
     },
     videoUrl:{
         type:String,
@@ -75,8 +70,7 @@ const movieSchema = new mongoose.Schema({
     default:0,
     min:0,
     max:10
-  }
-},
+  }},
 {timestamps:true});
 
 const Movie = mongoose.model('Movie', movieSchema);

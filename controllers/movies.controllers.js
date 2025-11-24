@@ -63,3 +63,13 @@ export const createMovie = async (req, res) => {
 
 // controller delete movie
 
+export const deleteMovie = async (req, res) => {
+  try {
+    const movieSearched = await Movie.findByIdAndDelete(req.params.id);
+    if (!movieSearched) {
+      return res.send(404).json({ message:`It doesnt found the products`})
+    }
+  } catch (error) {
+    console.error(500);
+  }
+};
