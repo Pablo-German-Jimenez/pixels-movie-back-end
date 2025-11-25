@@ -26,7 +26,7 @@ This project was developed using a combination of modern technologies to ensure 
 🚀 Project Deployment
 You can access the latest version of the project at the following link:
 
-Project Link: [Click Here!](https://pixelsmovies-front.netlify.app/) 
+Project Link: [Click Here!](https://pixels-movie-front-end.netlify.app/)
 
 
 💻 Installation and Usage
