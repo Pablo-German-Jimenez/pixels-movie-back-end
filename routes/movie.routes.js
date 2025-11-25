@@ -4,10 +4,10 @@ import { createMovie, getAllMovies , getMovieById, updateMovie} from '../control
 
 const moviesRoutes = Router();
 
-moviesRoutes('/').get(getAllMovies)//other way to write: with get method
-moviesRoutes('/:id', getMovieById)
-moviesRoutes.post('/',createMovie);//way to write: with post method
-moviesRoutes('/:id').put(updateMovie)
+moviesRoutes.get('/',getAllMovies);
+moviesRoutes.get('/:id', getMovieById);
+moviesRoutes.post('/',createMovie);
+moviesRoutes.put('/:id',updateMovie);
 
 
 export default moviesRoutes;

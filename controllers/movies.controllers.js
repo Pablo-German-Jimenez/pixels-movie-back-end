@@ -1,6 +1,6 @@
 import Movie from "../models/Movie.js";
 
-//controller get all movies
+//controller get all movies :O
 export const getAllMovies = async (req, res) => {
   try {
     const movies = await Movie.find().toSorted({ createdAt: -1 });
@@ -18,7 +18,7 @@ export const getAllMovies = async (req, res) => {
   }
 };
 
-//controller get movie by id
+//controller get movie by id :P
 export const getMovieById = async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
@@ -43,7 +43,7 @@ export const getMovieById = async (req, res) => {
   }
 };
 
-// controller creator new movie
+// controller creator new movie :)
 export const createMovie = async (req, res) => {
   try {
     const movie = await Movie.create(req.body);
@@ -61,7 +61,7 @@ export const createMovie = async (req, res) => {
   }
 };
 
-// controller delete movie
+// controller delete movie :(
 
 export const deleteMovie = async (req, res) => {
   try {
@@ -74,11 +74,11 @@ export const deleteMovie = async (req, res) => {
   }
 };
 
-// Controller find by id movie and update
+// Controller find by id movie and update :D
 
 export const updateMovie = async (req, res) => {
   try {
-    const movieFinded = await Movie.findByIdAndUpdate(req.params.id, req.body);
+    const movieFinded = await Movie.findByIdAndUpdate(req.params.id, req.body,{new:true});
     if (!movieFinded) {
       return res.status(404).json({ message: `Movie not found` });
     }
