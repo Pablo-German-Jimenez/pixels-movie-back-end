@@ -67,9 +67,24 @@ export const deleteMovie = async (req, res) => {
   try {
     const movieSearched = await Movie.findByIdAndDelete(req.params.id);
     if (!movieSearched) {
-      return res.send(404).json({ message:`It doesnt found the products`})
+      return res.send(404).json({ message: `It doesnt found the products` });
     }
   } catch (error) {
     console.error(500);
+  }
+};
+
+// Controller find by id movie and update
+
+export const updateMovie = async (req, res) => {
+  try {
+    const movieFinded = await Movie.findByIdAndUpdate(req.params.id, req.body);
+    if (!movieFinded) {
+      return res.status(404).json({ message: `Movie not found` });
+    }
+    res.status(200).json({ message: `Movie updated successfully` });
+  } catch (error) {
+    console.error(500);
+    res.status(500).json({ message: `Error updating movie` });
   }
 };
